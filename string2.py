@@ -19,11 +19,11 @@
 
 def verbing(s):
    ly = "ly"
-   if len(s) < 3:
+   if len(s) <= 2:
        return s
    elif s[-3:] == 'ing': 
        return s + ly
-   elif len(s) > 3:
+   elif len(s) >= 2:
        return s + 'ing'
 
 # E. not_bad
@@ -42,8 +42,7 @@ def not_bad(s):
         new_string = s[not_index:bad_index]
         last = s.replace("bad", '')
         return last.replace(new_string,"good")
-    elif bad_index < not_index:
-        return s 
+    return s 
     
 
 
@@ -55,23 +54,16 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
+    a_string = len(a)/2
+    b_front = len(b)/2 + len(b)/3
+    b_back = len(b)/2 
     if len(a) % 2 == 0 and len(b) % 2 == 0:
-        a_string = len(a) /2
-        b_string = len(b) /2
-        return a[:a_string] + b[:b_string] + a[a_string:] + b[b_string:]
+        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back:]
     elif len(a) % 2 == 1 and len(b) % 2 == 1:
-        a_string = len(a) /2 +1
-        b_front = len(b)/2 + len(b)/3
-        b_back = len(b) /2 +1
-        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back:]
+        return a[:a_string+1] + b[:b_front] + a[a_string+1:] + b[b_back+1:]
     elif len(a) % 2 == 0 and len(b) % 2 == 1:
-        a_string = len(a) /2 
-        b_front = len(b) /2 + len(b)/3
-        b_back = len(b) /2 +1
-        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back:]
+        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back+1:]
     return
-
-
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
