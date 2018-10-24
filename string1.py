@@ -24,8 +24,11 @@
 # So donuts(5) returns 'Number of donuts: 5'
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
-    """Your code goes here.  Edit this docstring."""
-    return
+    count = count
+    if count > 9:
+        return "Number of donuts: many"
+    else:
+        return "Number of donuts: " + str(count)
 
 
 # B. both_ends
@@ -34,10 +37,11 @@ def donuts(count):
 # so 'spring' yields 'spng'. However, if the string length
 # is less than 2, return instead the empty string.
 def both_ends(s):
-    """Your code goes here.  Edit this docstring."""
-    return
-
-
+    if len(s) < 2:
+        return ""
+    elif len(s) > 2:
+        return s[:2] + s[-2:]
+        
 # C. fix_start
 # Given a string s, return a string
 # where all occurences of its first char have
@@ -48,9 +52,10 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    """Your code goes here.  Edit this docstring."""
-    return
-
+    star = "*"
+    for ch in s:
+        if ch > 1:
+           return s[0]+ s[1:].replace(ch,star)
 
 # D. MixUp
 # Given strings a and b, return a single string with a and b separated
@@ -60,8 +65,10 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    """Your code goes here.  Edit this docstring."""
-    return
+    first = b[0:2] + a[2:]
+    last = a[0:2] + b[2:]
+
+    return first +" "+ last
 
 
 # Provided simple test() function used in main() to print

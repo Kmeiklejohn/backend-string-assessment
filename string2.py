@@ -18,9 +18,13 @@
 
 
 def verbing(s):
-    """Your code goes here.  Edit this docstring."""
-    return
-
+   ly = "ly"
+   if len(s) < 3:
+       return s
+   elif s[-3:] == 'ing': 
+       return s + ly
+   elif len(s) > 3:
+       return s + 'ing'
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -31,8 +35,16 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    not_index = s.find("not")
+    bad_index = s.find("bad")
+    
+    if not_index < bad_index:
+        new_string = s[not_index:bad_index]
+        last = s.replace("bad", '')
+        return last.replace(new_string,"good")
+    elif bad_index < not_index:
+        return s 
+    
 
 
 # F. front_back
@@ -43,7 +55,20 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    """Your code goes here.  Edit this docstring."""
+    if len(a) % 2 == 0 and len(b) % 2 == 0:
+        a_string = len(a) /2
+        b_string = len(b) /2
+        return a[:a_string] + b[:b_string] + a[a_string:] + b[b_string:]
+    elif len(a) % 2 == 1 and len(b) % 2 == 1:
+        a_string = len(a) /2 +1
+        b_front = len(b)/2 + len(b)/3
+        b_back = len(b) /2 +1
+        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back:]
+    elif len(a) % 2 == 0 and len(b) % 2 == 1:
+        a_string = len(a) /2 
+        b_front = len(b) /2 + len(b)/3
+        b_back = len(b) /2 +1
+        return a[:a_string] + b[:b_front] + a[a_string:] + b[b_back:]
     return
 
 
